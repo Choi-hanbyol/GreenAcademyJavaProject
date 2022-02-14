@@ -7,7 +7,7 @@ public class Game_369 {
 		for(int i=1; i<=20; i++) { //1~20
 			int one = i%10;
 			int three = one%3;
-			
+
 			try {
 				int a = 1234/three;
 				System.out.println(i);
@@ -20,8 +20,7 @@ public class Game_369 {
 				}
 				
 			}
-		}//for
-		
+		}
 	}//main
 
 }//class
