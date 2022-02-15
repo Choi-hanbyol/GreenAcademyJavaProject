@@ -14,7 +14,7 @@ public class Game_369 {
 			} catch (Exception e) {
 				try {
 					int a = 1234/one;
-					System.out.println("짝");
+					System.out.println(i+"짝");
 				} catch (Exception e2) {
 					System.out.println(i);
 				}
