@@ -1,3 +1,4 @@
+//함수를 사용하여 조금 간단하게 풀이
 package util_p;
 
 public class Game_369Ver_2 {
