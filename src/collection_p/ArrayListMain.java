@@ -2,6 +2,7 @@ package collection_p;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class ArrayListMain {
 
@@ -56,8 +57,6 @@ public class ArrayListMain {
 		System.out.println(arr1.indexOf(20));
 		System.out.println(arr1.indexOf(100));
 		System.out.println(arr1.lastIndexOf(20));
-		
-
 	}
 
 }
