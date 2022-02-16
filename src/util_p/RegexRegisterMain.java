@@ -67,7 +67,24 @@ class RRQQ{
 	}
 }
 
+class RegZipCode{
+	
+	String gu, zipcode;
 
+	public RegZipCode(String str) {
+		String [] arr = str.split("_");
+		this.gu = arr[0];
+		this.zipcode = arr[1];
+	}
+
+	@Override
+	public String toString() {
+		return gu + "=>" + zipcode;
+	}
+	
+	
+	
+}
 
 
 
@@ -95,16 +112,22 @@ public class RegexRegisterMain {
 				"깋닣딯맇밓빟싷잏짛칳킿팋핗힣앃낗띻찧삫"
 		};
 		
-		String [] gu = "종로구,중구,용산구,성동구,광진구,동대문구,중랑구,성북구,강북구,도봉구,노원구,은평구,서대문구,마포구,양천구,강서구,구로구,금천구,영등포구,동작구,관악구,서초구,강남구,송파구,강동구".split(","); 
+		String [] gu = "종로구_00111,중구_00222,용산구_00223,성동구_00224,광진구_00225,동대문구_00226,중랑구_00227,성북구_00228,강북구_00229,도봉구_00230,노원구_00231,은평구_00232,서대문구_00233,마포구_00234,양천구_00235,강서구_00236,구로구_00237,금천구_00238,영등포구_00239,동작구_00240,관악구_00241,서초구_00242,강남구_00243,송파구_00244,강동구_00245".split(","); 
+		
+		RegZipCode [] zipArr = new RegZipCode[gu.length];
+		
+		for (int i = 0; i < zipArr.length; i++) {
+			zipArr[i] = new RegZipCode(gu[i]);
+		}
 		
 		
 		RRQQ [] arr = {
-			new RRQQ("아이디","id","[a-zA-Z0-9]{3,}"),
-			new RRQQ("비번","pw",".{4,}"),
-			new RRQQ("비번확인","",".{4,}"),
-			new RRQQ("전화번호","tel","([0-9]{3}-[0-9]{4}|[0-9]{2,3}-[0-9]{3})-[0-9]{4}"),
-			new RRQQ("이름","pname","[가-힣]{2,}"),
-			new RRQQ("사진","img",".{1,}[.](jpg|jpeg|bmp|png|gif)"),
+//			new RRQQ("아이디","id","[a-zA-Z0-9]{3,}"),
+//			new RRQQ("비번","pw",".{4,}"),
+//			new RRQQ("비번확인","",".{4,}"),
+//			new RRQQ("전화번호","tel","([0-9]{3}-[0-9]{4}|[0-9]{2,3}-[0-9]{3})-[0-9]{4}"),
+//			new RRQQ("이름","pname","[가-힣]{2,}"),
+//			new RRQQ("사진","img",".{1,}[.](jpg|jpeg|bmp|png|gif)"),
 			new RRQQ("우편번호","addr","[ㄱ-ㅎ가-힣]*")
 		};
 		
@@ -139,9 +162,9 @@ public class RegexRegisterMain {
 				//System.out.println(pp);
 				String schGu = "";
 				
-				for (String gg : gu) {
-					if(Pattern.matches(pp, gg)) {
-						schGu+=gg+",";
+				for (RegZipCode zipcode: zipArr) {
+					if(Pattern.matches(pp, zipcode.gu)) {
+						schGu+=zipcode+",";
 					}
 				}
 				
