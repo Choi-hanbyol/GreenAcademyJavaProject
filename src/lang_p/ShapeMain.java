@@ -11,21 +11,30 @@ class ShapeRectangle implements ShapeType{
 	
 	@Override
 	public void execute(int a, int b) {
-		System.out.println("사각형의 넓이 : "+a*b);
+		System.out.print("사각형의 넓이 : "+a*b);
+		System.out.println();
+		System.out.print("사각형의 둘레 : "+(a+b)*2);
+		System.out.println();
 	}
 }
 
 class ShapeCircle implements ShapeType{
 	@Override
 	public void execute(int a, int b) {
-		System.out.println("원의 넓이 : "+a*b*3.14);
+		System.out.print("원의 넓이 : "+a*b*3.14);
+		System.out.println();
+		System.out.print("원의 둘레 : "+(a+b)*3.14);
+		System.out.println();
 	}
 }
 
 class ShapeTriangle implements ShapeType{
 	@Override
 	public void execute(int a, int b) {
-		System.out.println("삼각형의 넓이 : "+(a*b)/2);
+		System.out.print("직각삼각형의 넓이 : "+(a*b)/2);
+		System.out.println();
+		System.out.print("직각삼각형의 둘레 : "+a+b);
+		System.out.println();
 	}
 }
 public class ShapeMain {
@@ -43,49 +52,50 @@ public class ShapeMain {
 			if(tt==0) {
 				try {
 					ShapeType st = (ShapeType)Class.forName("lang_p.ShapeRectangle").newInstance();
-					System.out.println("가로 입력 : ");
+					System.out.print("가로 입력 : ");
 					int a = sc.nextInt();
-					System.out.println("세로 입력 : ");
+					System.out.print("세로 입력 : ");
 					int b = sc.nextInt();
 					st.execute(a,b);
 					break;
 					
 				} catch (Exception e) {
-					System.out.println("잘못된 명령어 입니다.");
-					System.out.println();
+					
 				}
 			}else if(tt==1) {
 				try {
 					ShapeType st = (ShapeType)Class.forName("lang_p.ShapeCircle").newInstance();
-					System.out.println("반지름 입력 : ");
+					System.out.print("반지름 입력 : ");
 					int a = sc.nextInt();
-					System.out.println("반지름 입력 : ");
+					System.out.print("반지름 입력 : ");
 					int b = sc.nextInt();
 					st.execute(a,b);
 					break;
 					
 				} catch (Exception e) {
-					System.out.println("잘못된 명령어 입니다.");
-					System.out.println();
+		
 				}
 			}
 			else if(tt==2) {
 				try {
 					ShapeType st = (ShapeType)Class.forName("lang_p.ShapeTriangle").newInstance();
-					System.out.println("가로 입력 : ");
+					System.out.print("가로 입력 : ");
 					int a = sc.nextInt();
-					System.out.println("세로 입력 : ");
+					System.out.print("세로 입력 : ");
 					int b = sc.nextInt();
 					st.execute(a,b);
 					break;
 					
 				} catch (Exception e) {
-					System.out.println("잘못된 명령어 입니다.");
-					System.out.println();
+				
 				}
 			}
 			else if(tt==9) {
 				break;
+			}
+			else{
+				System.out.println("잘못된 명령어 입니다.");
+				System.out.println();
 			}
 			
 		}
