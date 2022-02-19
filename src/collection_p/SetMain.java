@@ -43,7 +43,7 @@ public class SetMain {
 		s1.removeAll(arr2);
 		System.out.println(arr2);
 		System.out.println(s1);
-		
+		 
 		
 		Set lotto1 = new HashSet();
 		ArrayList lotto2 = new ArrayList();
