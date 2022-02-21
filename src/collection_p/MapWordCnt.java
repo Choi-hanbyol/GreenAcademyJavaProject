@@ -17,20 +17,19 @@ public class MapWordCnt {
 		
 		HashMap map = new HashMap();
 		for (String string : arr) {
-			//System.out.println(string);
+			System.out.println(string);
 			
 			int cnt = 1;
 			
 			if(map.containsKey(string)) {
 				cnt+= (int)map.get(string);
 				//System.out.println("있어:");
-				
 			}
 			
 			map.put(string, cnt);
 			//System.out.println(map);
 		}
-		
+		System.out.println("=========================================");
 		for (Object oo :map.entrySet()) {
 			System.out.println(oo);
 			
