@@ -61,6 +61,18 @@ class TreeStud{
 			
 			
 			TreeStud you = (TreeStud)object;
+			boolean [] boArr = {
+					type.equals(you.type) && res < you.res ,
+					type.equals(you.type) && ban == you.ban && res < you.res,
+					gender.equals(you.gender) && ban == you.ban && res < you.res,
+					ban == you.ban && res < you.res,
+					cutStr.equals(you.cutStr) && res < you.res
+			};
+			if(boArr[no]) {
+				rank++;
+			}
+			
+			/*
 			switch(no) {
 				case 0:
 					if(type.equals(you.type) && res < you.res) {
@@ -88,7 +100,7 @@ class TreeStud{
 						rank++;
 					}
 					break;
-			}
+			}*/
 		}
 	}
 
@@ -215,7 +227,27 @@ public class TreeSetExamMain {
 		dataArr.add(new TreeStud("황대헌", "남", 1, 60, 75, 40, 85));
 		dataArr.add(new TreeStud("이유빈", "여", 2, 50, 50, 45, 75));
 		
+		String [] title = {
+				"1. type 별> 등수(type_rank)",
+				"2. type > 반 > 등수(type_class_rank) ",
+				"3. 반 > 성별별> 등수(class_gen_rank) ",
+				"4. 반>이름(내림차순)>등수(반별등수)(class_name_rank)",
+				"5. 합격 커트라인 합격점수 : 일반:70, 특기생 : 65(type_PF)"
+		};
 		
+		for (int i = 0; i < title.length; i++) {
+			System.out.println(title[i]);
+			TreeSet ts = new TreeSet(new TSExamCom(i));
+			ts.addAll(dataArr);
+			
+			for (Object obj : ts) {
+				((TreeStud)obj).rankCalc(i, dataArr);
+				System.out.println(obj);
+			}
+		}
+		
+		
+		/*
 		System.out.println("1. type 별> 등수(type_rank)");
 		TreeSet ts0 = new TreeSet(new TSExamCom(0));
 		ts0.addAll(dataArr);
@@ -260,6 +292,7 @@ public class TreeSetExamMain {
 			((TreeStud)obj).rankCalc(4, dataArr);
 			System.out.println(obj);
 		}
+		*/
 		
 	}
 
