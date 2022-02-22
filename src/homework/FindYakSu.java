@@ -31,8 +31,9 @@ public class FindYakSu {
 			}
 			
 			map.put(i, res);
-			//System.out.println("i : "+i+" / res : "+res); -->i랑 res값 확인해볼려고 한것
+			System.out.println("i : "+i+" / res : "+res); //-->i랑 res값 확인해볼려고 한것
 		}
+		
 		System.out.println("===========약수들의 갯수===========");
 		for (Object oo : map.entrySet()) {
 			System.out.println(oo);
