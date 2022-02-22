@@ -1,6 +1,10 @@
 package collection_p;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -33,8 +37,15 @@ public class MapNumMain {
 		//Set kk = new TreeSet( map.keySet());
 		
 		//System.out.println(kk);
-		System.out.println("==========약수들의 갯수==========");
+		System.out.println("==========약수들의 갯수 오름차순==========");
 		for (Object k : new TreeSet(map.keySet())) {
+			System.out.println(k+" : "+map.get(k));
+		}
+		
+		System.out.println("==========약수들의 갯수 내림차순==========");
+		ArrayList arr = new ArrayList(new TreeSet(map.keySet()));
+		Collections.reverse(arr);
+		for (Object k : arr) {
 			System.out.println(k+" : "+map.get(k));
 		}
 	}
