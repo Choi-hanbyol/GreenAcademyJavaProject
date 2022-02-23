@@ -8,14 +8,24 @@ package collection_p;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Iterator;
+import java.util.Map;
+import java.util.TreeMap;
 import java.util.TreeSet;
 
-class GenShape{
+class GenShape implements Comparable<GenShape>{
 	String name;
 	double area, border;
 	@Override
 	public String toString() {
 		return name+" : "+area+" : "+border;
+	}
+	@Override
+	public int compareTo(GenShape o) {
+		int res = (int)(o.area-area);
+		if(res==0) {
+			res = (int)(o.border-border);
+		}
+		return res;
 	}
 }
 
@@ -63,20 +73,37 @@ public class GenShapeMain {
 		arr.add(new GenRectangle(5, 6));
 		arr.add(new GenCircle(5));
 		arr.add(new GenRectangle(10, 6));
+		arr.add(new GenRectangle(4, 5));
 		arr.add(new GenCircle(8));
 		arr.add(new GenCircle(10));
+		arr.add(new GenRectangle(10, 2));
 		arr.add(new GenRectangle(8, 7));
 		
 		Iterator<GenShape>it = arr.iterator();
 		
-//		while(it.hasNext()) {
-//			GenShape gs = it.next();
-//			System.out.println(gs);
-//		}
+		TreeMap<String, TreeSet<GenShape>>map = new TreeMap();
 		
-		for(GenShape gs : arr) {
-			System.out.println(gs.name+" => 넓이 : "+gs.area+" / 둘레 : "+gs.border);
+		while(it.hasNext()) {
+			GenShape gs = it.next();
+//			System.out.println(gs);
+			
+			if(!map.containsKey(gs.name)) {
+				map.put(gs.name, new TreeSet<GenShape>());
+			}
+			map.get(gs.name).add(gs);
 		}
+		
+		for (Map.Entry<String, TreeSet<GenShape>>me : map.entrySet()) {
+			System.out.println(me.getKey()+">>");
+			
+			for (GenShape gs : me.getValue()) {
+				System.out.println(gs);
+			}
+		}
+		
+//		for(GenShape gs : arr) {
+//			System.out.println(gs.name+" => 넓이 : "+gs.area+" / 둘레 : "+gs.border);
+//		}
 	}
 
 }
