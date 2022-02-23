@@ -1,7 +1,6 @@
 package thread_p;
 
 import java.util.ArrayList;
-
 import javax.swing.JOptionPane;
 
 class ThQuizTimer extends Thread{
