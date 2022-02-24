@@ -1,6 +1,7 @@
 package thread_p;
 
 import java.util.ArrayList;
+
 import javax.swing.JOptionPane;
 
 class ThQuizTimer extends Thread{
@@ -37,7 +38,7 @@ class ThQuiz extends Thread{
 	
 	ArrayList<ThQuizData> arr;
 	
-	
+	int jum =0;
 	
 	
 	public ThQuiz(ThQuizTimer timer, ThQuizData... arr) {
@@ -47,6 +48,7 @@ class ThQuiz extends Thread{
 		
 		for (ThQuizData qData : arr) {
 			this.arr.add(qData);
+			qData.timer = timer;
 		}
 	}
 
@@ -56,34 +58,69 @@ class ThQuiz extends Thread{
 	@Override
 	public void run() {
 	
-		int jum = 0;
+		jum = 0;
 		for (ThQuizData qd : arr) {
-			String input = JOptionPane.showInputDialog(qd.qq);
+			
 			if(timer.chk) {
-				
-				input ="시간경과";
 				break;
 			}
-			System.out.println(qd.qq+":"+input+"("+qd.answer+")");
-			if(qd.answer.equals(input)) {
+			
+			if(qd.go()) {
 				jum+=20;
 			}
+			
 		}
 		
 		timer.chk = true;
+		ppp();
+	}
+	
+	void ppp() {
 		System.out.println("시험점수:"+jum);
+		for (ThQuizData qd : arr) {
+			System.out.println(qd.res);
+		}
 	}
 }
 
 class ThQuizData{
-	String qq, answer;
+	String qq, answer, input, last, res;
+	ThQuizTimer timer;
 
 	public ThQuizData(String qq, String answer) {
 		super();
 		this.qq = qq;
 		this.answer = answer;
+		
+		res= qq+":미응시->"+input+"("+answer+")";
 	}
 	
+	boolean go() {
+		
+		while(true) {
+			input  = JOptionPane.showInputDialog(qq);
+			if(timer.chk) {
+				input ="시간경과";
+				return false;
+			}
+			
+			
+			if(answer.equals(input)) {
+				res=qq+":정답->"+input+"("+answer+")";
+				break;
+			}
+			if(input.equals("p")) {
+				input = last;
+				res=qq+":패스->"+input+"("+answer+")";
+				break;
+			}
+			System.out.println(qq+":"+input+"("+answer+")");
+			last = input;		
+		}
+		
+		return answer.equals(input);
+
+	}
 	
 }
 
