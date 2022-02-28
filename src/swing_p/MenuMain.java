@@ -99,7 +99,7 @@ public class MenuMain extends JFrame{
 		
 		setVisible(true);
 		setResizable(false); //창크기 변경 유무
-		setExtendedState(MAXIMIZED_BOTH); //창크기 최대로!!!
+		//setExtendedState(MAXIMIZED_BOTH); //창크기 최대로!!!
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 	}
 	
