@@ -42,10 +42,10 @@ public class ContainerMain {
 		System.out.println(arr[1].getBackground());
 		
 		
-		for (int i = 0; i < 5; i++) {
-			p1.add(new JButton("버튼 "+i));
-			p2.add(new JButton("버튼 "+i));
-		}
+//		for (int i = 0; i < 5; i++) {
+//			p1.add(new JButton("버튼 "+i));
+//			p2.add(new JButton("버튼 "+i));
+//		}
 		
 		f1.setVisible(true);
 		
