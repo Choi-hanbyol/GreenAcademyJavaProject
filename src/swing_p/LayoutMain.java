@@ -95,7 +95,7 @@ public class LayoutMain {
 			i++;
 			i%=3;
 			card.show(f5.getContentPane(), arr[i]);
-	
+	 
 			try {
 				Thread.sleep(1000);
 			} catch (InterruptedException e) {
