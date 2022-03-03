@@ -10,11 +10,11 @@ import java.awt.event.MouseMotionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JScrollBar;
+//import javax.swing.JScrollBar;
 import javax.swing.JSlider;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
-import javax.swing.plaf.FontUIResource;
+//import javax.swing.plaf.FontUIResource;
 
 public class CharPaintMain extends JFrame implements MouseMotionListener, ActionListener{
 
