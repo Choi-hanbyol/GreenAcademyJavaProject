@@ -20,7 +20,10 @@ public class CharPaintMain extends JFrame implements MouseMotionListener, Action
 
 	public CharPaintMain() {
 
-		System.out.println("생성자");
+		System.out.println("생성자"+MouseEvent.BUTTON1_DOWN_MASK);
+		System.out.println("생성자"+MouseEvent.BUTTON2_DOWN_MASK);
+		System.out.println("생성자"+MouseEvent.BUTTON3_DOWN_MASK);
+		
 		setBounds(50, 50, 600, 500);
 		getContentPane().setBackground(Color.white);
 		setLayout(null);
@@ -71,6 +74,8 @@ public class CharPaintMain extends JFrame implements MouseMotionListener, Action
 	
 	Color cc = Color.black;
 	
+	String ttt="";
+	
 	@Override
 	public void paint(Graphics g) {
 		// TODO Auto-generated method stub
@@ -84,7 +89,7 @@ public class CharPaintMain extends JFrame implements MouseMotionListener, Action
 		}
 			g.setFont(new Font("휴먼편지체", Font.PLAIN, size));
 			g.setColor(cc);
-			g.drawString("●",x, y );
+			g.drawString(ttt,x, y );
 		
 		
 	}
@@ -96,8 +101,18 @@ public class CharPaintMain extends JFrame implements MouseMotionListener, Action
 
 	@Override
 	public void mouseDragged(MouseEvent e) {
+		
+		//System.out.println(e.getModifiersEx());
+		
+		if(e.getModifiersEx()==MouseEvent.BUTTON1_DOWN_MASK) {
+			ttt="●";
+		}
+		else {
+			ttt="○";
+		}
+		
 		first = false;
-		// TODO Auto-generated method stub
+		
 		//System.out.println("dragged"+e.getX()+","+e.getY());
 		if(e.getX()>=100 && e.getY()<=350) {
 			x = e.getX();
