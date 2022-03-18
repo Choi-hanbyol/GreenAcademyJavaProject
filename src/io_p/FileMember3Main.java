@@ -31,7 +31,7 @@ public class FileMember3Main {
 		for (String fName : "qqq2.txt,qqq4.txt,qqq8.txt,qqq9.txt".split(",")) {
 			String ttt = "";
 			try {
-				FileInputStream fis = new FileInputStream("pic/"+fName);
+				FileInputStream fis = new FileInputStream("fff/"+fName);
 				
 				int data;
 				while((data=fis.read())!=-1) {

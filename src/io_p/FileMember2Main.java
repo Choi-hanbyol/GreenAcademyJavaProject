@@ -42,9 +42,10 @@ class FileMember2{
 public class FileMember2Main {
 
 	public static void main(String[] args) {
+
 		String tt = "";
 		try {
-			FileInputStream file = new FileInputStream("pic/qqq2.txt");
+			FileInputStream file = new FileInputStream("fff/qqq2.txt");
 			
 			int data;
 			
@@ -53,6 +54,7 @@ public class FileMember2Main {
 				tt += (char)data;
 				
 			}
+			file.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -62,7 +64,7 @@ public class FileMember2Main {
 			FileMember2 fm2 = new FileMember2(t1[i]);
 			System.out.println(fm2);
 		}
-		
+
 	}
 
 }

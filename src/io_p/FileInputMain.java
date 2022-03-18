@@ -10,7 +10,7 @@ public class FileInputMain {
 		
 		try {
 			//1. stream 생성
-			FileInputStream fis = new FileInputStream("pic/asdf.txt");
+			FileInputStream fis = new FileInputStream("fff/asdf.txt");
 			
 			int data;
 			

@@ -28,7 +28,7 @@ public class FileMemberMain {
 		
 		String ttt="";
 		try {
-			FileInputStream fis = new FileInputStream("pic/qqq.txt");
+			FileInputStream fis = new FileInputStream("fff/qqq.txt");
 			
 			
 			int data;
