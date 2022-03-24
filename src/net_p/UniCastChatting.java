@@ -23,7 +23,7 @@ public class UniCastChatting extends JFrame{
 	InetAddress sender_addr;
 	
 
-	class UniReceiver extends Thread{
+	class UniReceiver extends Thread {
 		DatagramSocket socket = null;
 		
 		@Override
