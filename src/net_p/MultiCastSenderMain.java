@@ -15,7 +15,7 @@ public class MultiCastSenderMain {
 				String msg = sc.nextLine();
 				byte [] buf = msg.getBytes();
 				
-				InetAddress addr = InetAddress.getByName("233.0.0.1");
+				InetAddress addr = InetAddress.getByName("230.0.0.1");
 				
 				DatagramPacket data = new DatagramPacket(
 						buf, 

@@ -30,9 +30,9 @@ InetAddress userIP;
 		public void run() {
 		
 			try {
-				ms = new MulticastSocket(8888);
+				ms = new MulticastSocket(Integer.parseInt( port.getText()));
 				
-				addr = InetAddress.getByName("230.0.0.1");
+				addr = InetAddress.getByName(ip.getText());
 				ms.joinGroup(addr);
 				
 				while(true) {
@@ -62,24 +62,25 @@ InetAddress userIP;
 			}
 		}
 	}
+	
 	JButton btn;
 	JLabel ipip, poport;
 	JTextArea chatLog;
 	JTextField ip, port, chat; 
 	ChatReceiver cr;
 	
-	public MultiCastReceiverMain() {
+	public MultiCastReceiverMain() {//몸통을 만들자
 		
 		setBounds(50,50,400,600);
 		
 		ipip = new JLabel("ip주소");
 		poport = new JLabel("포트번호");
 		
-		ip = new JTextField("ip주소입력");
-		ip.setPreferredSize(new Dimension(100,30));
+		ip = new JTextField();
+		ip.setPreferredSize(new Dimension(90,30));
 		
-		port = new JTextField("포트번호입력");
-		port.setPreferredSize(new Dimension(100,30));
+		port = new JTextField();
+		port.setPreferredSize(new Dimension(90,30));
 		
 		btn = new JButton("연결");
 		
@@ -105,7 +106,7 @@ InetAddress userIP;
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		
 		chat.addActionListener(new ActionListener() {
-			
+			//채팅을 치고 엔터를 누르면
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
@@ -135,10 +136,11 @@ InetAddress userIP;
 		});
 		
 		btn.addActionListener(new ActionListener() {
-			
+			//ip랑 port입력하고 누르면
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if(e.getSource()==btn) {
+				if(btn.getText().equals("연결")) {
+					//연결을 누르면
 					System.out.println("Ip주소 : "+ip.getText());
 					System.out.println("포트번호 : "+port.getText());
 					
@@ -150,16 +152,20 @@ InetAddress userIP;
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
-					cr = new ChatReceiver();
+					cr = new ChatReceiver(); //채팅을 보내는 메소드로가자
 					cr.start();
+					
+					ip.setEditable(false);
+					port.setEditable(false);
+					
+					btn.setText("연결종료");
 					
 					chat.setEditable(true);
 					chat.requestFocus();
-					ip.setEditable(false);
-					port.setEditable(false);
-					btn.setText("연결종료");	
+						
 				}
 				else {
+					//연결종료를 누르면
 					userPort.close();
 					userPort = null;
 					
@@ -177,7 +183,7 @@ InetAddress userIP;
 	}
 
 	public static void main(String[] args) {
-		new MultiCastReceiverMain();
+		new MultiCastReceiverMain(); //몸통을 만들자
 	}
 
 }
